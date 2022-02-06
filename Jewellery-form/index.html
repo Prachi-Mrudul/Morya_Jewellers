@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morya Jewellers</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <button class="priceBtn" id="priceBtn" onclick="togglePrice()">Price</button>
+    <div id="overlay"></div>
+    <div id="priceInput">
+        <i class="bi bi-x-lg" onclick="togglePrice()"></i>
+        <div class="input">
+            <div class="label">
+                <label for="name">Gold :</label>
+            </div>
+            <input type="text" id="gold_price" placeholder="Gold Price" autocomplete="off">
+        </div>
+        <div class="input">
+            <div class="label">
+                <label for="name">Silver :</label>
+            </div>
+            <input type="text" id="silver_price" placeholder="Silver Price" autocomplete="off">
+        </div>
+        <button onclick="savePrice()">Save</button>
+    </div>
+    <div class="container">
+        <section class="heading flex-center">
+            <div class="head">
+                <h1>Morya Jewellers</h1>
+                <p>Gold and Sliver</p>
+                <div class="contact flex-center">
+                    <h4>Contact Us</h4>
+                    <div class="call">
+                        <img src="img/call logo.png" alt="">
+                        <p>8369091799</p>
+                    </div>
+                    <div class="call">
+                        <img src="img/wp logo.jpg" alt="">
+                        <p>7303835912</p>
+                    </div>
+                </div>
+                <div class="address">
+                    <span>Address: </span>
+                    Shop no. 2, Shree Sankalp building, Near Ekrup gym, Tembhipada road, Bhandup west, Mumbai-400078
+                </div>
+                <p>Jewelleries can be made as per your need.</p>
+            </div>
+        </section>
+        <section class="form mt-3">
+            <form action="">
+                <div class="flex-center" style="justify-content: space-between;">
+                    <div class="w-48">
+                        <p>Bill No.: 69</p>
+                    </div>
+                    <div class="w-48" style="text-align: right;">
+                        <p id="datePara">Date: 24-32-4432</p>
+                    </div>
+                </div>
+                <div class="flex-center" style="justify-content: space-between;">
+                    <div class="input w-48">
+                        <div class="label">
+                            <label for="name">Name :</label>
+                        </div>
+                        <input type="text" id="customerName" autocomplete="off">
+                    </div>
+                    <div class="input w-48">
+                        <div class="label">
+                            <label for="mobile">Mobile no. :</label>
+                        </div>
+                        <input type="number" id="customerMob" autocomplete="off">
+                    </div>
+                </div>
+                <div class="input">
+                    <div class="label">
+                        <label for="address">Address :</label>
+                    </div>
+                    <input type="text" id="customerAdd" autocomplete="off">
+                </div>
+            </form>
+            <div class="table">
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>Sr. no.</th>
+                            <th class="items">Items</th>
+                            <th>Purity</th>
+                            <th>Weight (gm)</th>
+                            <th>Weight (mg)</th>
+                            <th>Rate</th>
+                            <th class="w-200">Making charges</th>
+                            <th class="w-200">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tBody"></tbody>
+                </table>
+                <table class="inpForm">
+                    <thead>
+                        <form id="inpForm">
+                            <tr>
+                                <th style="width: 148px;">
+                                    <button type="button" id="add-btn" onclick="addElem(this)">Add</button>
+                                </th>
+                                <th class="items" style="width: 348px;">
+                                    <input placeholder="Item" class="tableInp" type="text">
+                                </th>
+                                <th style="width: 150px;">
+                                    <input class="tableInp" placeholder="Purity" type="text">
+                                </th>
+                                <th>
+                                    <input class="tableInp" placeholder="Wt. (gm)" value="0" type="text">
+                                </th>
+                                <th>
+                                    <input class="tableInp" placeholder="Wt. (mg)" value="0" type="text">
+                                </th>
+                                <th>
+                                    <input class="tableInp" placeholder="Amount" readonly type="text">
+                                </th>
+                                <th class="w-200">
+                                    <input placeholder="Making Charges" class="tableInp" value="0" type="text">
+                                </th>
+                                <th class="w-200">
+                                    <input class="tableInp" type="text" value="0" readonly>
+                                </th>
+                            </tr>
+                        </form>
+                    </thead>
+                </table>
+                <table class="btm-table">
+                    <thead>
+                        <tr>
+                            <th class="trash"></th>
+                            <th class="w-200">Total</th>
+                            <th class="w-200"><input class="tableInp" type="text" id="itemTotal" readonly placeholder="Total"></th>
+                        </tr>
+                        <tr>
+                            <th class="trash"></th>
+                            <th class="w-200">Discount</th>
+                            <th class="w-200"><input class="tableInp" type="text" value="0" id="discount" placeholder="Discount"></th>
+                        </tr>
+                        <tr>
+                            <th class="trash"></th>
+                            <th class="w-200">Discounted Amount</th>
+                            <th class="w-200"><input class="tableInp" type="text" id="discountedAmount" value="0" readonly placeholder="Discounted Amount"></th>
+                        </tr>
+                        <tr>
+                            <th class="trash"></th>
+                            <th class="w-200">GST</th>
+                            <th class="w-200"><input class="tableInp" type="text" id="gst" value="0" placeholder="GST"></th>
+                        </tr>
+                        <tr>
+                            <th class="trash"><button id="evaluate-btn" onclick="evaluateTable()">Evaluate</button></th>
+                            <th class="w-200">Grand Total</th>
+                            <th class="w-200" id="grandTotal">0</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <form class="bottom">
+                <div class="flex-center" style="justify-content: space-between;">
+                    <div class="input w-48">
+                        <div class="label">
+                            <label for="paid">Paid :</label>
+                        </div>
+                        <input type="number" value="0" placeholder="Paid" id="paid" autocomplete="off">
+                    </div>
+                    <div class="input w-48">
+                        <div class="label">
+                            <label for="balance">Balance :</label>
+                        </div>
+                        <input type="number" value="0" placeholder="Balance" id="balance" autocomplete="off">
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="/firebase/config.js"></script>
+    <script src="/firebase/auth.js"></script>
+    <script src="/firebase/bill.js"></script>
+</body>
+</html>
