@@ -207,7 +207,12 @@ table{
 }
 .priceBtn{
     position: absolute;
-    top: 40%;
+    top: 25%;
     left: 5%;
     cursor: pointer;
+}
+form span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }

@@ -1,4 +1,5 @@
 function signIn() {
+    document.getElementById('errorText').innerHTML = "";
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     firebase.auth().signInWithEmailAndPassword(email.value, password.value)
@@ -10,7 +11,7 @@ function signIn() {
             }, 2000);
         })
         .catch((error) => {
-            console.log(error.message);
+            document.getElementById('errorText').innerHTML = error.message;
         });
 }
 firebase.auth().onAuthStateChanged((user) => {

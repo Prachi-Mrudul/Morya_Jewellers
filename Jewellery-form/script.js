@@ -143,7 +143,7 @@ function savePrice(){
 }
 setInterval(() => {
     let dateString = getDate();
-    datePara.innerHTML = `Date: ${dateString}`
+    datePara.innerHTML = dateString
 }, 1000);
 function getDate(){
     let newDate = new Date();

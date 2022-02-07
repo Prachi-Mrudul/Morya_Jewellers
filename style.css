@@ -19,13 +19,28 @@ form{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 4rem auto;
+}
+.input{
+    width: 40vw;
+    margin-bottom: 10px;
 }
 input{
     width: 100%;
+    padding: 7px 12px;
+    outline: none;
 }
 h2{
     position: absolute;
     top: 4%;
     left: 50%;
     transform: translateX(-50%);
+}
+button{
+    padding: 5px 10px;
+    cursor: pointer;
+}
+#errorText{
+    margin: 15px 0;
+    color: red;
 }

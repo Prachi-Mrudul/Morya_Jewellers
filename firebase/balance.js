@@ -1,6 +1,6 @@
 const db = firebase.firestore();
 let userTableBody = document.getElementById('userTableBody');
-db.collection("bills").where("balance", "!=", 0)
+db.collection("bills").orderBy("balance").where("balance", "!=", 0)
     .onSnapshot((querySnapshot) => {
         var users = [];
         querySnapshot.forEach((doc) => {
@@ -10,8 +10,9 @@ db.collection("bills").where("balance", "!=", 0)
     });
 
 const renderTable = (users) => {
+    console.log(users);
     users.forEach(user => {
-        userTableBody.innerHTML = `
+        userTableBody.innerHTML += `
         <tr>
             <td>${user.billNo}</td>
             <td>${user.date}</td>

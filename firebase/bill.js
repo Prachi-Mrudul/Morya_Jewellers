@@ -1,5 +1,16 @@
 const db = firebase.firestore();
+let billNumber = document.getElementById('billNumber');
+let bill_Number;
+db.collection("bills").doc("Bill_Number")
+    .onSnapshot((doc) => {
+       handleBillNo(doc.data())
+    });
+function handleBillNo(data){
+    billNumber.innerHTML = data.billNo+1;
+    console.log(data.billNo+1);
+}
 function saveData() {
+    evaluateTable();
     let objArr = []
     let rows = table.rows;
     let total = Number(itemTotal.value);
@@ -38,17 +49,16 @@ function saveData() {
         grandTotal: grand_Total,
         items: objArr,
         date: document.getElementById("datePara").innerHTML,
-        billNo: 1,
+        billNo: bill_Number+1,
         paid: paid.value,
         balance: Number(balance.value)
     }
     console.log(finalObj);
     db.collection('bills').add(finalObj)
         .then(function (doc) {
-            if (balance.value != 0) {
-                console.log(doc.id);
-                console.log("pending");
-            }
+            db.collection("bills").doc("Bill_Number").set({
+                billNo: Number(billNumber.innerHTML)
+            })
         })
         .catch(function (err) {
             console.log(err.message);
