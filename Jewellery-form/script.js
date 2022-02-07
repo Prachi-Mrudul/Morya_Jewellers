@@ -16,6 +16,7 @@ let discountedAmount = document.getElementById('discountedAmount');
 let grandTotal = document.getElementById('grandTotal');
 let paid = document.getElementById('paid');
 let balance = document.getElementById('balance');
+let navbar = document.querySelector('nav');
 let goldPrice = 0;
 let goldPriceGm = 0;
 let silverPrice = 0;
@@ -121,12 +122,14 @@ function togglePrice(){
 window.addEventListener('beforeprint', () => {
     inp_form.style.display = "none";
     evaluate_btn.style.display = "none";
-    priceBtn.style.display = "none"
+    priceBtn.style.display = "none";
+    navbar.style.display = "none"
 })
 window.addEventListener('afterprint', () => {
     inp_form.style.display = "";
     evaluate_btn.style.display = "";
     priceBtn.style.display = ""
+    navbar.style.display = ""
 })
 function savePrice(){
     let gold_price = document.getElementById('gold_price');
