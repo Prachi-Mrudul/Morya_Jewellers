@@ -6,43 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/navbar.css">
 </head>
 <body>
+    <nav>
+        <h3>Morya Jewellers</h3>
+        <ul class="nav-links">
+            <li><a href="/">Authentication</a></li>
+            <li><a href="/Jewellery-form/">Billing</a></li>
+            <li><a href="/balance/">Balance</a></li>
+            <li><a href="/expenses/">Expenses</a></li>
+        </ul>
+    </nav>
+    <form action="" autocomplete="off">
+        <div class="input">
+            <div class="label">
+                <label for="date">Date :</label>
+            </div>
+            <input type="date" id="date">
+        </div>
+        <div class="input">
+            <div class="label">
+                <label for="item">Item :</label>
+            </div>
+            <input type="text" id="item">
+        </div>
+        <div class="input">
+            <div class="label">
+                <label for="name">Name :</label>
+            </div>
+            <input type="text" id="name">
+        </div>
+        <div class="input">
+            <div class="label">
+                <label for="amount">Amount :</label>
+            </div>
+            <input type="number" id="amount">
+        </div>
+        <button class="btn" type="add"> Add </button>
+    </form>
     <div class="cont">
-        <form action="" autocomplete="off">
-            <div class="input">
-                <div class="label">
-                    <label for="date">Date :</label>
-                </div>
-                <input type="date" id="date">
-            </div>
-            <div class="input">
-                <div class="label">
-                    <label for="item">Item :</label>
-                </div>
-                <input type="text" id="item">
-            </div>
-            <div class="input">
-                <div class="label">
-                    <label for="name">Name :</label>
-                </div>
-                <input type="text" id="name">
-            </div>
-            <div class="input">
-                <div class="label">
-                    <label for="amount">Amount :</label>
-                </div>
-                <input type="number" id="amount">
-            </div>
-            <button class="btn" type="add"> Add </button>
-        </form>
         <table>
-            <tr>
-                <th>Date</th>
-                <th>Item</th>
-                <th>Name</th>
-                <th>Amount</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Item</th>
+                    <th>Name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Date</td>
+                    <td>Item</td>
+                    <td>Name</td>
+                    <td>Amount</td>
+                </tr>
+            </tbody>
             
         </table>
     </div>

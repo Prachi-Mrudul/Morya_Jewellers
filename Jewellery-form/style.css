@@ -7,8 +7,6 @@ body{
     height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
     font-family: 'Nunito', serif;
 }
 .flex-center{
@@ -209,7 +207,7 @@ table{
 }
 .priceBtn{
     position: absolute;
-    top: 10%;
+    top: 40%;
     left: 5%;
     cursor: pointer;
 }
