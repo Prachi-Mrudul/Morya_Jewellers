@@ -23,7 +23,7 @@ function dateFilter(){
         renderTable(users);
     })
     .catch((error) => {
-        console.log("Error getting documents: ", error);
+        window.alert("Error getting document");
     });
 }
 
@@ -34,7 +34,6 @@ function billNoFilter(){
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            console.log(doc.data());
             let obj = {
                 data: doc.data(),
                 id: doc.id
@@ -44,6 +43,6 @@ function billNoFilter(){
         renderTable(users);
     })
     .catch((error) => {
-        console.log("Error getting documents: ", error);
+        window.alert("Error getting documents");
     });
 }

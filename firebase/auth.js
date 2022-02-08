@@ -5,7 +5,6 @@ function signIn() {
     firebase.auth().signInWithEmailAndPassword(email.value, password.value)
         .then((userCredential) => {
             var user = userCredential.user;
-            console.log(user);
             setTimeout(() => {
                 window.location.href = "/billing/"
             }, 2000);
@@ -16,7 +15,7 @@ function signIn() {
 }
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        console.log(user);
+        return;
     } else {
         if (!window.location.href.includes("authentication")) {
             document.querySelector('body').innerHTML = '';
@@ -30,7 +29,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
 function signOut() {
     firebase.auth().signOut().then(() => {
-       console.log("signout Successfully");
+       window.alert("Logged Out Successfully")
     }).catch((error) => {
         console.log(error.message);
     });

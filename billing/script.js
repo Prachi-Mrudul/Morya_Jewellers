@@ -33,7 +33,7 @@ function getPrice() {
         goldPriceGm = goldPrice / 10;
         silverPriceGm = silverPrice / 1000;
     } catch (error) {
-        console.log("Error Fetching Items");
+        window.alert("Error Fetching Items");
     }
 }
 getPrice()
@@ -87,10 +87,8 @@ function trsget() {
 function evaluateTable() {
     getPrice();
     let rows = table.rows;
-    console.log(rows);
     let sum = 0;
     for (let i = 1; i < rows.length; i++) {
-        console.log(rows[i]);
         let weight = Number(rows[i].children[3].innerHTML) + (Number(rows[i].children[4].innerHTML) / 10)
         let amount = weight * goldPriceGm;
         rows[i].children[5].innerHTML = amount;
@@ -146,7 +144,6 @@ setInterval(() => {
     datePara.innerHTML = dateString
 }, 1000);
 function renderPage(data) {
-    console.log(data);
     customerAdd.value = data.address;
     balance.value = data.balance;
     billNumber.innerHTML = data.billNo;

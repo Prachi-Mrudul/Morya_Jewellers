@@ -2,7 +2,7 @@ let amount = document.getElementById('amount');
 let item = document.getElementById('item');
 let name = document.getElementById('name');
 let date = document.getElementById('date');
-let tbody = document.getElementById('tbody');
+// let userTableBody = document.getElementById('userTableBody');
 let dateInp = document.getElementById('dateInp');
 let totalExpenses = document.getElementById('totalExpenses');
 function getDate() {
@@ -15,7 +15,6 @@ function getDate() {
         month = `0${newDate.getMonth()+1}`
     }
     let dateString = `${newDate.getFullYear()}-${month}-${date}`
-    console.log(dateString);
     return dateString;
 }
 let todayDate = getDate();
@@ -28,10 +27,10 @@ function addExpensesData(){
         amount: Number(amount.value)
     })
     .then(function(){
-        console.log("Data Added");
+        window.alert('Data Saved')
     })
     .catch(function(err){
-        console.log(err.message);
+        window.alert(err.message);
     })
 }
 const db = firebase.firestore();
@@ -53,9 +52,9 @@ db.collection("expenses").where("date", "==", todayDate)
     });
 
 function renderExpensesTable(users){
-    tbody.innerHTML = '';
+    userTableBody.innerHTML = '';
     users.forEach(user => {
-        tbody.innerHTML += `
+        userTableBody.innerHTML += `
         <tr>
             <td>${user.data.date}</td>
             <td>${user.data.item}</td>

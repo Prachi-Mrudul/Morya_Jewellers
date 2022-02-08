@@ -4,7 +4,6 @@ let bill_Number;
 let url_string = window.location.href
 let url = new URL(url_string);
 let c = Boolean(url.searchParams.get("update"));
-console.log(c);
 if (!c) {
     db.collection("bills").doc("Bill_Number")
     .onSnapshot((doc) => {
@@ -16,11 +15,10 @@ else{
     db.collection('bills').doc(window.localStorage.getItem('currentCustomer')).get()
     .then(function(doc){
         c = Boolean(url.searchParams.get("update"));
-        console.log(c);
         renderPage(doc.data())
     })
     .catch(function(err){
-        console.log(err.message);
+        window.alert(err.message);
     })
 }
 function handleBillNo(data) {
@@ -77,7 +75,7 @@ function saveData() {
             })
         })
         .catch(function (err) {
-            console.log(err.message);
+            window.alert(err.message);
         })
     }
     else{

@@ -1,6 +1,5 @@
 const renderTable = (users) => {
     userTableBody.innerHTML = ''
-    console.log(users);
     users.forEach(user => {
         userTableBody.innerHTML += `
         <tr name="${user.id}" onclick="handleUpdate('${user.id}')">
@@ -23,7 +22,6 @@ function getDate() {
         month = `0${newDate.getMonth()+1}`
     }
     let dateString = `${newDate.getFullYear()}-${month}-${date}`
-    console.log(dateString);
     return dateString;
 }
 
@@ -34,9 +32,10 @@ try {
         items = userTableBody.querySelectorAll('tr')
         let searchQuery = e.target.value.toLowerCase();
         items.forEach(item => {
-            let billNo = item.children[0].innerText.toLowerCase()
-            let name = item.children[2].innerText.toLowerCase()
-            let flag = billNo.includes(searchQuery) || name.includes(searchQuery);
+            let query1 = item.children[0].innerText.toLowerCase()
+            let query2 = item.children[1].innerText.toLowerCase()
+            let query3 = item.children[2].innerText.toLowerCase()
+            let flag = query1.includes(searchQuery) || query2.includes(searchQuery) || query3.includes(searchQuery);
             if (flag) {
                 item.style.display = "";
             } else {
@@ -45,7 +44,7 @@ try {
         });
     })
 } catch (error) {
-    console.log(error.message);
+    window.alert(error.message);
 }
 function handleUpdate(name) {
     window.localStorage.setItem('currentCustomer', name);
