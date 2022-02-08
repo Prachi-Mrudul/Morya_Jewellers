@@ -21,6 +21,15 @@
             <li><a href="/expenses/">Expenses</a></li>
         </ul>
     </nav>
+    <div class="container">
+        <div class="search_container">
+            <input type="date" id="dateInp" placeholder="Date">
+            <button onclick="fetchData()">Search</button>
+        </div>
+        <div>
+            <p>Total Expenses: <span id="totalExpenses"></span></p>
+        </div>
+    </div>
     <form action="" autocomplete="off">
         <div class="input">
             <div class="label">
@@ -46,7 +55,7 @@
             </div>
             <input type="number" id="amount">
         </div>
-        <button class="btn" type="add"> Add </button>
+        <button class="btn" onclick="addExpensesData()" type="button"> Add </button>
     </form>
     <div class="cont">
         <table>
@@ -58,16 +67,16 @@
                     <th>Amount</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Date</td>
-                    <td>Item</td>
-                    <td>Name</td>
-                    <td>Amount</td>
-                </tr>
-            </tbody>
+            <tbody id="tbody"></tbody>
             
         </table>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="/firebase/config.js"></script>
+    <script src="/firebase/auth.js"></script>
+    <script src="/firebase/expenses.js"></script>
+    <script src="/commonFunctions.js"></script>
 </body>
 </html>
