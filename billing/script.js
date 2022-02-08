@@ -145,19 +145,6 @@ setInterval(() => {
     let dateString = getDate();
     datePara.innerHTML = dateString
 }, 1000);
-function getDate() {
-    let newDate = new Date();
-    let date, month;
-    if (newDate.getDate() <= 9) {
-        date = `0${newDate.getDate()}`
-    }
-    if (newDate.getMonth() <= 9) {
-        month = `0${newDate.getMonth()}`
-    }
-    let dateString = `${newDate.getFullYear()}-${month}-${date}`
-    return dateString;
-}
-
 function renderPage(data) {
     console.log(data);
     customerAdd.value = data.address;
