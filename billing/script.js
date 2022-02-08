@@ -101,7 +101,7 @@ function evaluateTable() {
         sum = sum + Number(rows[j].children[7].innerHTML)
     }
     itemTotal.value = sum;
-    discountedAmount.value = sum - (sum * (discount.value / 100))
+    discountedAmount.value = sum - (sum * (discount.value / 100)).toFixed(0)
     grandTotal.innerHTML = discountedAmount.value - (discountedAmount.value * (gst.value / 100));
     balance.value = Number(grandTotal.innerHTML) - paid.value
 }

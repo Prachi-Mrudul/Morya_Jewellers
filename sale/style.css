@@ -80,22 +80,15 @@ tr {
 h1 {
   margin: 2rem 0;
 }
-.search {
-  width: 380px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .hide {
   display: none;
 }
 .container {
+  width: 85%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin-right: auto;
   margin-top: 15px;
-  margin-left: 20px;
 }
 .container input{
     width: 180px;
@@ -107,4 +100,7 @@ h1 {
   border-radius: 5px;
   outline: none;
   font-size: 17px;
+}
+.container span{
+  font-weight: bolder;
 }

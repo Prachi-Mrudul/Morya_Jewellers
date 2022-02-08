@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/navbar.css">
 </head>
+
 <body>
     <nav>
         <div class="search">
@@ -22,8 +24,14 @@
         </ul>
     </nav>
     <div class="container">
-        <input type="date" id="dateInp" placeholder="Date">
-        <button onclick="getData()">Search</button>
+        <div class="search_container">
+            <input type="date" id="dateInp" placeholder="Date">
+            <button onclick="dateFilter()">Search</button>
+        </div>
+        <div>
+            <p>Total Sale: <span id="totalSale"></span></p>
+            <p>Payment Received: <span id="paymentRecieved"></span></p>
+        </div>
     </div>
     <h1>Sale</h1>
     <div class="cont">
@@ -51,4 +59,5 @@
     <script src="/firebase/sale.js"></script>
     <script src="/commonFunctions.js"></script>
 </body>
+
 </html>
