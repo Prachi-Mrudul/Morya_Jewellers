@@ -21,7 +21,7 @@ let goldPrice = 0;
 let goldPriceGm = 0;
 let silverPrice = 0;
 let silverPriceGm = 0;
-function getPrice(){
+function getPrice() {
     try {
         let localItems = JSON.parse(window.localStorage.getItem('gold_silver_price'));
         let gold_price = document.getElementById('gold_price');
@@ -30,8 +30,8 @@ function getPrice(){
         silver_price.value = Number(localItems.silver_price);
         goldPrice = Number(localItems.gold_price);
         silverPrice = Number(localItems.silver_price);
-        goldPriceGm = goldPrice/10;
-        silverPriceGm = silverPrice/1000;
+        goldPriceGm = goldPrice / 10;
+        silverPriceGm = silverPrice / 1000;
     } catch (error) {
         console.log("Error Fetching Items");
     }
@@ -73,10 +73,10 @@ function trsget() {
         tr.addEventListener('click', (e) => {
             let item = e.target.parentNode;
             e.target.parentNode.style.backgroundColor = "lightblue";
-            document.addEventListener('keyup', function(eventT){
+            document.addEventListener('keyup', function (eventT) {
                 eventHandle(eventT, item)
             })
-            e.target.parentNode.addEventListener('click', function(eDash){
+            e.target.parentNode.addEventListener('click', function (eDash) {
                 eDash.target.parentNode.style.backgroundColor = "white"
                 document.removeEventListener('keyup', () => { eventHandle })
                 trsget();
@@ -92,7 +92,7 @@ function evaluateTable() {
     for (let i = 1; i < rows.length; i++) {
         console.log(rows[i]);
         let weight = Number(rows[i].children[3].innerHTML) + (Number(rows[i].children[4].innerHTML) / 10)
-        let amount = weight*goldPriceGm;
+        let amount = weight * goldPriceGm;
         rows[i].children[5].innerHTML = amount;
         let finalAmount = amount + Number(rows[i].children[6].innerHTML)
         rows[i].children[7].innerHTML = finalAmount;
@@ -101,13 +101,13 @@ function evaluateTable() {
         sum = sum + Number(rows[j].children[7].innerHTML)
     }
     itemTotal.value = sum;
-    discountedAmount.value = sum - (sum*(discount.value/100))
-    grandTotal.innerHTML = discountedAmount.value - (discountedAmount.value*(gst.value/100));
+    discountedAmount.value = sum - (sum * (discount.value / 100))
+    grandTotal.innerHTML = discountedAmount.value - (discountedAmount.value * (gst.value / 100));
     balance.value = Number(grandTotal.innerHTML) - paid.value
 }
 
 let flag1 = false
-function togglePrice(){
+function togglePrice() {
     if (!flag1) {
         overlay.style.display = "block";
         priceInput.style.display = "block";
@@ -131,7 +131,7 @@ window.addEventListener('afterprint', () => {
     priceBtn.style.display = ""
     navbar.style.display = ""
 })
-function savePrice(){
+function savePrice() {
     let gold_price = document.getElementById('gold_price');
     let silver_price = document.getElementById('silver_price');
     let obj = {
@@ -145,7 +145,7 @@ setInterval(() => {
     let dateString = getDate();
     datePara.innerHTML = dateString
 }, 1000);
-function getDate(){
+function getDate() {
     let newDate = new Date();
     let date, month;
     if (newDate.getDate() <= 9) {
@@ -156,4 +156,38 @@ function getDate(){
     }
     let dateString = `${date}-${month}-${newDate.getFullYear()}`
     return dateString;
+}
+
+function renderPage(data) {
+    console.log(data);
+    customerAdd.value = data.address;
+    balance.value = data.balance;
+    billNumber.innerHTML = data.billNo;
+    datePara.innerHTML = data.date;
+    discount.value = data.discountPercentage;
+    discountedAmount.value = data.discountedTotalAmount;
+    grandTotal.innerHTML = data.grandTotal;
+    gst.value = data.gstPercentage;
+    customerMob.value = data.mobileNo;
+    customerName.value = data.name;
+    paid.value = data.paid;
+    itemTotal.value = data.total;
+    let itemsData = data.items;
+    let i = 0;
+    itemsData.forEach(item => {
+        tBody.innerHTML += `
+        <tr>
+            <td>${i + 1}</td>
+            <td class="items">${item.item}</td>
+            <td>${item.purity}</td>
+            <td>${item.weightGm}</td>
+            <td>${item.weightMg}</td>
+            <td>${item.rate}</td>
+            <td class="w-200">${item.makingCharges}</td>
+            <td class="w-200">${item.itemsTotal}</td>
+        </tr>
+        `
+        inpForm.reset();
+        trsget()
+    });
 }

@@ -14,10 +14,11 @@ db.collection("bills").orderBy('balance').orderBy('billNo').where("balance", "!=
     });
 
 const renderTable = (users) => {
+    userTableBody.innerHTML = ''
     console.log(users);
     users.forEach(user => {
         userTableBody.innerHTML += `
-        <tr name="${user.id}">
+        <tr name="${user.id}" onclick="handleUpdate('${user.id}')">
             <td>${user.data.billNo}</td>
             <td>${user.data.date}</td>
             <td>${user.data.name}</td>

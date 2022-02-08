@@ -1,11 +1,28 @@
 const db = firebase.firestore();
 let billNumber = document.getElementById('billNumber');
 let bill_Number;
-db.collection("bills").doc("Bill_Number")
+let url_string = window.location.href
+let url = new URL(url_string);
+let c = Boolean(url.searchParams.get("update"));
+console.log(c);
+if (!c) {
+    db.collection("bills").doc("Bill_Number")
     .onSnapshot((doc) => {
         bill_Number = doc.data().billNo
         handleBillNo(doc.data())
     });
+}
+else{
+    db.collection('bills').doc(window.localStorage.getItem('currentCustomer')).get()
+    .then(function(doc){
+        c = Boolean(url.searchParams.get("update"));
+        console.log(c);
+        renderPage(doc.data())
+    })
+    .catch(function(err){
+        console.log(err.message);
+    })
+}
 function handleBillNo(data) {
     billNumber.innerHTML = data.billNo + 1;
 }
@@ -52,7 +69,8 @@ function saveData() {
         paid: paid.value,
         balance: Number(balance.value)
     }
-    db.collection('bills').add(finalObj)
+    if (!c) {
+        db.collection('bills').add(finalObj)
         .then(function (doc) {
             db.collection("bills").doc("Bill_Number").set({
                 billNo: bill_Number + 1
@@ -61,4 +79,17 @@ function saveData() {
         .catch(function (err) {
             console.log(err.message);
         })
+    }
+    else{
+        delete finalObj.date
+        delete finalObj.billNo
+        db.collection('bills').doc(window.localStorage.getItem('currentCustomer')).update(finalObj)
+        .then(function(){
+            window.alert('Data Updated!')
+            window.location.href = '/billing/'
+        })
+        .catch(function(err){
+            window.alert(err.message)
+        })
+    }
 }
