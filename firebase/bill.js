@@ -3,11 +3,11 @@ let billNumber = document.getElementById('billNumber');
 let bill_Number;
 db.collection("bills").doc("Bill_Number")
     .onSnapshot((doc) => {
-       handleBillNo(doc.data())
+        bill_Number = doc.data().billNo
+        handleBillNo(doc.data())
     });
-function handleBillNo(data){
-    billNumber.innerHTML = data.billNo+1;
-    console.log(data.billNo+1);
+function handleBillNo(data) {
+    billNumber.innerHTML = data.billNo + 1;
 }
 function saveData() {
     evaluateTable();
@@ -35,7 +35,6 @@ function saveData() {
             makingCharges: makingCharges,
             itemsTotal: itemsTotal,
         }
-        console.log(obj);
         objArr.push(obj)
     }
     let finalObj = {
@@ -49,15 +48,14 @@ function saveData() {
         grandTotal: grand_Total,
         items: objArr,
         date: document.getElementById("datePara").innerHTML,
-        billNo: bill_Number+1,
+        billNo: bill_Number + 1,
         paid: paid.value,
         balance: Number(balance.value)
     }
-    console.log(finalObj);
     db.collection('bills').add(finalObj)
         .then(function (doc) {
             db.collection("bills").doc("Bill_Number").set({
-                billNo: Number(billNumber.innerHTML)
+                billNo: bill_Number + 1
             })
         })
         .catch(function (err) {

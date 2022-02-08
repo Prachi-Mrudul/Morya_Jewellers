@@ -18,7 +18,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 90%;
 }
 form{
     display: flex;
@@ -72,6 +72,9 @@ th, td{
     border: 1px solid black;
     padding: 3px;
     text-align: center;
+}
+tr{
+    cursor: pointer;
 }
 h1{
     margin: 2rem 0;

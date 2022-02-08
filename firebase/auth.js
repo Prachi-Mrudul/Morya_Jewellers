@@ -7,7 +7,7 @@ function signIn() {
             var user = userCredential.user;
             console.log(user);
             setTimeout(() => {
-                window.location.href = "/Jewellery-form/"
+                window.location.href = "/billing/"
             }, 2000);
         })
         .catch((error) => {
@@ -20,7 +20,7 @@ firebase.auth().onAuthStateChanged((user) => {
     } else {
         if (!window.location.href.includes("authentication")) {
             document.querySelector('body').innerHTML = '';
-            window.location.href = "/authentication/"            
+            window.location.href = "/"            
         }
         else{
             return;

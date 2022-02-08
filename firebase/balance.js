@@ -1,10 +1,14 @@
 const db = firebase.firestore();
 let userTableBody = document.getElementById('userTableBody');
-db.collection("bills").orderBy("balance").where("balance", "!=", 0)
+db.collection("bills").orderBy('balance').orderBy('billNo').where("balance", "!=", 0)
     .onSnapshot((querySnapshot) => {
         var users = [];
         querySnapshot.forEach((doc) => {
-            users.push(doc.data());
+            let obj = {
+                data: doc.data(),
+                id: doc.id
+            }
+            users.push(obj);
         });
         renderTable(users);
     });
@@ -13,12 +17,13 @@ const renderTable = (users) => {
     console.log(users);
     users.forEach(user => {
         userTableBody.innerHTML += `
-        <tr>
-            <td>${user.billNo}</td>
-            <td>${user.date}</td>
-            <td>${user.name}</td>
-            <td>${user.total}</td>
-            <td>${user.balance}</td>
+        <tr name="${user.id}">
+            <td>${user.data.billNo}</td>
+            <td>${user.data.date}</td>
+            <td>${user.data.name}</td>
+            <td>${user.data.total}</td>
+            <td>${user.data.paid}</td>
+            <td>${user.data.balance}</td>
         </tr>`
     });
 } 
