@@ -1,90 +1,110 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic");
-*{
-    margin: 0px;
-    padding: 0px;
+* {
+  margin: 0px;
+  padding: 0px;
 }
 
-body{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Nunito', sans-serif;
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
 }
-.cont{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
+.cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
 }
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 60%;
-    margin-top: 4rem;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin-top: 4rem;
 }
-.input{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
-    padding: 5px;
-    width: 100%;
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
 }
-.label{
-    width: 100px;
+.label {
+  width: 100px;
 }
-label{
-    margin: 5px;
-    padding: 5px; 
+label {
+  margin: 5px;
+  padding: 5px;
 }
-input{
-    width: 250px;
-    padding: 8px 20px;
-    border: 1px solid black;
-    border-radius: 5px;
-    outline: none;
-    font-size: 17px;
+input {
+  width: 250px;
+  padding: 8px 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+  font-size: 17px;
 }
-.btn{
-    height: 25px;
-    width: 70px;
-    margin: 10px;
-    font-size: 14px;
-    border: 1px solid black;
-    border-radius: 30px;
-    transition: 0.3s;
+.btn {
+  height: 25px;
+  width: 70px;
+  margin: 10px;
+  font-size: 14px;
+  border: 1px solid black;
+  border-radius: 30px;
+  transition: 0.3s;
 }
-.btn:hover{
-    cursor: pointer;
-    background-color: rgb(201, 201, 201);
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(201, 201, 201);
 }
-table{
-    width: 100%;
+table {
+  width: 100%;
 }
-th, td{
-    width: 500px;
-    border: 1px solid black;
-    padding: 3px;
-    text-align: center;
+th,
+td {
+  width: 500px;
+  border: 1px solid black;
+  padding: 3px;
+  text-align: center;
 }
-tr{
-    cursor: pointer;
+tr {
+  cursor: pointer;
 }
-h1{
-    margin: 2rem 0;
+h1 {
+  margin: 2rem 0;
 }
-.search{
-    width: 380px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.search {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.hide{
-    display: none;
+.hide {
+  display: none;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: auto;
+  margin-top: 15px;
+  margin-left: 20px;
+}
+.container input{
+    width: 180px;
+}
+.container button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+  font-size: 17px;
 }

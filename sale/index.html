@@ -21,7 +21,11 @@
             <li><a href="/expenses/">Expenses</a></li>
         </ul>
     </nav>
-    <h1>Balance</h1>
+    <div class="container">
+        <input type="date" id="dateInp" placeholder="Date">
+        <button onclick="getData()">Search</button>
+    </div>
+    <h1>Sale</h1>
     <div class="cont">
         <table>
             <thead>
@@ -45,5 +49,6 @@
     <script src="/firebase/config.js"></script>
     <script src="/firebase/auth.js"></script>
     <script src="/firebase/sale.js"></script>
+    <script src="/commonFunctions.js"></script>
 </body>
 </html>

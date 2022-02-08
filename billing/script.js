@@ -154,7 +154,7 @@ function getDate() {
     if (newDate.getMonth() <= 9) {
         month = `0${newDate.getMonth()}`
     }
-    let dateString = `${date}-${month}-${newDate.getFullYear()}`
+    let dateString = `${newDate.getFullYear()}-${month}-${date}`
     return dateString;
 }
 
