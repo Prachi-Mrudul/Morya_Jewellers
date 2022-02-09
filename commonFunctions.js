@@ -44,7 +44,11 @@ try {
         });
     })
 } catch (error) {
-    window.alert(error.message);
+    if (window.location.href.includes('billing')) {
+        return;
+    }else{
+        window.alert(error.message);
+    }
 }
 function handleUpdate(name) {
     window.localStorage.setItem('currentCustomer', name);

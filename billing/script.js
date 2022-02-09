@@ -97,6 +97,7 @@ function evaluateTable() {
     }
     for (let j = 1; j < rows.length; j++) {
         sum = sum + Number(rows[j].children[7].innerHTML)
+        rows[j].children[0].innerHTML = j;
     }
     itemTotal.value = sum;
     discountedAmount.value = sum - (sum * (discount.value / 100)).toFixed(0)
