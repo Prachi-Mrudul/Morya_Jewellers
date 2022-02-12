@@ -1,46 +1,53 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic");
-body{
-    display: flex;
-    flex-direction: column;
-    font-family: 'Nunito', sans-serif;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-family: "Nunito", sans-serif;
 }
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px 0;
-    background-color: #444;
-    color: white;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #444;
+  color: white;
 }
-nav h3{
-    margin-left: 40px;
+nav h3 {
+  margin-left: 40px;
 }
-.nav-links{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
-    color: white;
-    width: 35%;
+.nav-links {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  color: white;
+  width: 35%;
 }
-.nav-links a{
-    color: white;
-    text-decoration: none;
-    position: relative;
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  position: relative;
 }
-.nav-links a::before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    width: 0%;
-    background-color: white;
-    margin: 0 auto;
-    color: white;
-    text-decoration: none;
-    transition: 0.3s cubic-bezier(1, 0, 0, 0.97);
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: 0%;
+  background-color: white;
+  margin: 0 auto;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s cubic-bezier(1, 0, 0, 0.97);
 }
-.nav-links a:hover::before{
-    width: 100%;
+.nav-links a:hover::before {
+  width: 100%;
+}
+.search {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

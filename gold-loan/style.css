@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic");
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nunito", sans-serif;
+}
+.cont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.input-parent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+}
+.label {
+  width: 110px;
+}
+input,
+select {
+  width: 250px;
+  padding: 8px 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+  font-size: 17px;
+}
+.add {
+  height: 25px;
+  width: 70px;
+  margin: 10px;
+  font-size: 15px;
+  border: 1px solid black;
+  border-radius: 30px;
+  font-family: "Nunito", sans-serif;
+  transition: 0.3s;
+}
+button:hover {
+  cursor: pointer;
+  background-color: rgb(201, 201, 201);
+}
+table{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 4px 15px;
+  margin: 10px;
+  width: 90%;
+  text-align: center;
+}
+.container {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+.container input {
+  width: 180px;
+}
+.container button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  outline: none;
+  font-size: 17px;
+}
+.container span {
+  font-weight: bolder;
+}
+th, td{
+    border: 1px solid black;
+  border-collapse: collapse;
+  padding: 4px 15px;
+  cursor: pointer;
+}

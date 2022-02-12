@@ -1,5 +1,31 @@
 const db = firebase.firestore();
+let billNumber = document.getElementById('billNumber');
+let bill_Number;
+let url_string = window.location.href
+let url = new URL(url_string);
+let c = Boolean(url.searchParams.get("update"));
+if (!c) {
+    db.collection("bills").doc("Bill_Number")
+    .onSnapshot((doc) => {
+        bill_Number = doc.data().billNo
+        handleBillNo(doc.data())
+    });
+}
+else{
+    db.collection('bills').doc(window.localStorage.getItem('currentCustomer')).get()
+    .then(function(doc){
+        c = Boolean(url.searchParams.get("update"));
+        renderPage(doc.data())
+    })
+    .catch(function(err){
+        window.alert(err.message);
+    })
+}
+function handleBillNo(data) {
+    billNumber.innerHTML = data.billNo + 1;
+}
 function saveData() {
+    evaluateTable();
     let objArr = []
     let rows = table.rows;
     let total = Number(itemTotal.value);
@@ -24,7 +50,6 @@ function saveData() {
             makingCharges: makingCharges,
             itemsTotal: itemsTotal,
         }
-        console.log(obj);
         objArr.push(obj)
     }
     let finalObj = {
@@ -38,19 +63,34 @@ function saveData() {
         grandTotal: grand_Total,
         items: objArr,
         date: document.getElementById("datePara").innerHTML,
-        billNo: 1,
-        paid: paid.value,
+        billNo: bill_Number + 1,
+        paid: Number(paid.value),
         balance: Number(balance.value)
     }
-    console.log(finalObj);
-    db.collection('bills').add(finalObj)
+    if (!c) {
+        db.collection('bills').add(finalObj)
         .then(function (doc) {
-            if (balance.value != 0) {
-                console.log(doc.id);
-                console.log("pending");
-            }
+            db.collection("bills").doc("Bill_Number").set({
+                billNo: bill_Number + 1
+            })
+            .then(function(){
+                window.alert('Data Saved')
+            })
         })
         .catch(function (err) {
-            console.log(err.message);
+            window.alert(err.message);
         })
+    }
+    else{
+        delete finalObj.date
+        delete finalObj.billNo
+        db.collection('bills').doc(window.localStorage.getItem('currentCustomer')).update(finalObj)
+        .then(function(){
+            window.alert('Data Updated!')
+            window.location.href = '/billing/'
+        })
+        .catch(function(err){
+            window.alert(err.message)
+        })
+    }
 }

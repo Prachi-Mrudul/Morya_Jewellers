@@ -74,3 +74,25 @@ th, td{
     text-align: center;
     /* margin: 10px; */
 }
+.container {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+  .container input{
+      width: 180px;
+  }
+  .container button {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+    font-size: 17px;
+  }
+  .container span{
+    font-weight: bolder;
+  }
+  

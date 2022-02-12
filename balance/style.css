@@ -18,7 +18,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 90%;
 }
 form{
     display: flex;
@@ -73,6 +73,18 @@ th, td{
     padding: 3px;
     text-align: center;
 }
+tr{
+    cursor: pointer;
+}
 h1{
     margin: 2rem 0;
+}
+.search{
+    width: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hide{
+    display: none;
 }

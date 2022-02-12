@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expenses</title>
+    <title>Sale</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/navbar.css">
 </head>
+
 <body>
     <nav>
         <div class="search">
@@ -18,65 +20,44 @@
             <li><a href="/billing/">Billing</a></li>
             <li><a href="/balance/">Balance</a></li>
             <li><a href="/sale/">Sale</a></li>
-            <li><a href="/gold-loan/">Gold Loan</a></li>
             <li><a href="/expenses/">Expenses</a></li>
         </ul>
     </nav>
     <div class="container">
         <div class="search_container">
             <input type="date" id="dateInp" placeholder="Date">
-            <button onclick="fetchData()">Search</button>
+            <button onclick="dateFilter()">Search</button>
         </div>
         <div>
-            <p>Total Expenses: <span id="totalExpenses"></span></p>
+            <p>Total Sale: <span id="totalSale"></span></p>
+            <p>Payment Received: <span id="paymentRecieved"></span></p>
         </div>
     </div>
-    <form action="" autocomplete="off">
-        <div class="input">
-            <div class="label">
-                <label for="date">Date :</label>
-            </div>
-            <input type="date" id="date">
-        </div>
-        <div class="input">
-            <div class="label">
-                <label for="item">Item :</label>
-            </div>
-            <input type="text" id="item">
-        </div>
-        <div class="input">
-            <div class="label">
-                <label for="name">Name :</label>
-            </div>
-            <input type="text" id="name">
-        </div>
-        <div class="input">
-            <div class="label">
-                <label for="amount">Amount :</label>
-            </div>
-            <input type="number" id="amount">
-        </div>
-        <button class="btn" onclick="addExpensesData()" type="button"> Add </button>
-    </form>
+    <h1>Sale</h1>
     <div class="cont">
         <table>
             <thead>
                 <tr>
+                    <th>Bill No.</th>
                     <th>Date</th>
-                    <th>Item</th>
                     <th>Name</th>
                     <th>Amount</th>
+                    <th>Paid</th>
+                    <th>Balance</th>
                 </tr>
             </thead>
-            <tbody id="userTableBody"></tbody>    
+            <tbody id="userTableBody"></tbody>
         </table>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="script.js"></script>
     <script src="/firebase/config.js"></script>
     <script src="/firebase/auth.js"></script>
-    <script src="/firebase/expenses.js"></script>
+    <script src="/firebase/sale.js"></script>
     <script src="/commonFunctions.js"></script>
 </body>
+
 </html>
