@@ -9,6 +9,7 @@ let installment = document.getElementById('installment');
 let paid = document.getElementById('paid');
 let balance = document.getElementById('balance');
 let form = document.getElementById('form');
+let totalBalance = document.getElementById('totalBalance');
 const db = firebase.firestore();
 const addData = () => {
     let queryString = window.location.search;
@@ -69,9 +70,9 @@ function fetchData() {
     db.collection("gold_loan").where("date", "==", dateInp.value)
         .onSnapshot((querySnapshot) => {
             var users = [];
-            let expensesAmount = 0;
+            let balanceSum = 0;
             querySnapshot.forEach((doc) => {
-                expensesAmount += doc.data().amount
+                balanceSum += doc.data().balance
                 let obj = {
                     data: doc.data(),
                     id: doc.id
@@ -79,6 +80,7 @@ function fetchData() {
                 users.push(obj);
             });
             renderLoanTable(users)
+            totalBalance.innerHTML = balanceSum;
         });
 
 

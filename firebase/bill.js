@@ -64,7 +64,7 @@ function saveData() {
         items: objArr,
         date: document.getElementById("datePara").innerHTML,
         billNo: bill_Number + 1,
-        paid: paid.value,
+        paid: Number(paid.value),
         balance: Number(balance.value)
     }
     if (!c) {
@@ -72,6 +72,9 @@ function saveData() {
         .then(function (doc) {
             db.collection("bills").doc("Bill_Number").set({
                 billNo: bill_Number + 1
+            })
+            .then(function(){
+                window.alert('Data Saved')
             })
         })
         .catch(function (err) {

@@ -8,6 +8,7 @@ let customerAdd = document.getElementById('customerAdd');
 let priceInput = document.getElementById('priceInput');
 let priceBtn = document.getElementById('priceBtn');
 let evaluate_btn = document.getElementById('evaluate-btn');
+let saveDataBtn = document.getElementById('saveData');
 let overlay = document.getElementById('overlay');
 let itemTotal = document.getElementById('itemTotal');
 let gst = document.getElementById('gst');
@@ -88,14 +89,8 @@ function evaluateTable() {
     getPrice();
     let rows = table.rows;
     let sum = 0;
-    for (let i = 1; i < rows.length; i++) {
-        let weight = Number(rows[i].children[3].innerHTML) + (Number(rows[i].children[4].innerHTML) / 10)
-        let amount = weight * goldPriceGm;
-        rows[i].children[5].innerHTML = amount;
-        let finalAmount = amount + Number(rows[i].children[6].innerHTML)
-        rows[i].children[7].innerHTML = finalAmount;
-    }
     for (let j = 1; j < rows.length; j++) {
+        rows[j].children[7].innerHTML = Number(rows[j].children[5].innerHTML) + Number(rows[j].children[6].innerHTML)
         sum = sum + Number(rows[j].children[7].innerHTML)
         rows[j].children[0].innerHTML = j;
     }
@@ -122,13 +117,15 @@ window.addEventListener('beforeprint', () => {
     inp_form.style.display = "none";
     evaluate_btn.style.display = "none";
     priceBtn.style.display = "none";
-    navbar.style.display = "none"
+    navbar.style.display = "none";
+    saveDataBtn.style.display = "none";
 })
 window.addEventListener('afterprint', () => {
     inp_form.style.display = "";
     evaluate_btn.style.display = "";
     priceBtn.style.display = ""
     navbar.style.display = ""
+    saveDataBtn.style.display = "";
 })
 function savePrice() {
     let gold_price = document.getElementById('gold_price');

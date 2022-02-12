@@ -60,10 +60,10 @@ function renderExpensesTable(users){
     users.forEach(user => {
         userTableBody.innerHTML += `
         <tr>
-            <td>${user.data.date}</td>
-            <td>${user.data.item}</td>
-            <td>${user.data.name}</td>
-            <td>${user.data.amount}</td>
+            <td title="${user.data.date}">${user.data.date}</td>
+            <td title="${user.data.item}">${user.data.item}</td>
+            <td title="${user.data.name}">${user.data.name}</td>
+            <td title="${user.data.amount}">${user.data.amount}</td>
         </tr>
     ` 
     });
@@ -83,6 +83,6 @@ function fetchData(){
             expensesAmount += doc.data().amount
         });
         renderExpensesTable(users);
+        totalExpenses.innerHTML = expensesAmount;
     });
-    totalExpenses.innerHTML = expensesAmount;
 }

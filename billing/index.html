@@ -125,16 +125,16 @@
                                     <input class="tableInp" placeholder="Purity" type="text">
                                 </th>
                                 <th>
-                                    <input class="tableInp" placeholder="Wt. (gm)" value="0" type="text">
+                                    <input class="tableInp" placeholder="Wt. (gm)" value="0" type="number">
                                 </th>
                                 <th>
-                                    <input class="tableInp" placeholder="Wt. (mg)" value="0" type="text">
+                                    <input class="tableInp" placeholder="Wt. (mg)" value="0" type="number">
                                 </th>
                                 <th>
-                                    <input class="tableInp" placeholder="Amount" readonly type="text">
+                                    <input class="tableInp" placeholder="Amount" type="number">
                                 </th>
                                 <th class="w-200">
-                                    <input placeholder="Making Charges" class="tableInp" value="0" type="text">
+                                    <input placeholder="Making Charges" class="tableInp" value="0" type="number">
                                 </th>
                                 <th class="w-200">
                                     <input class="tableInp" type="text" value="0" readonly>
@@ -153,20 +153,20 @@
                         <tr>
                             <th class="trash"></th>
                             <th class="w-200">Discount</th>
-                            <th class="w-200"><input class="tableInp" type="text" value="0" id="discount" placeholder="Discount"></th>
+                            <th class="w-200"><input class="tableInp" type="number" value="0" id="discount" placeholder="Discount"></th>
                         </tr>
                         <tr>
-                            <th class="trash"></th>
+                            <th class="trash"><button id="evaluate-btn" onclick="evaluateTable()">Evaluate</button></th>
                             <th class="w-200">Discounted Amount</th>
                             <th class="w-200"><input class="tableInp" type="text" id="discountedAmount" value="0" readonly placeholder="Discounted Amount"></th>
                         </tr>
                         <tr>
                             <th class="trash"></th>
                             <th class="w-200">GST</th>
-                            <th class="w-200"><input class="tableInp" type="text" id="gst" value="0" placeholder="GST"></th>
+                            <th class="w-200"><input class="tableInp" type="number" id="gst" value="0" placeholder="GST"></th>
                         </tr>
                         <tr>
-                            <th class="trash"><button id="evaluate-btn" onclick="evaluateTable()">Evaluate</button></th>
+                            <th class="trash"><button id="saveData" onclick="saveData()">Save Data</button></th>
                             <th class="w-200">Grand Total</th>
                             <th class="w-200" id="grandTotal">0</th>
                         </tr>
