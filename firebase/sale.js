@@ -14,11 +14,11 @@ function dateFilter(){
             received += doc.data().paid;
             totalSale.innerHTML = sale;
             paymentRecieved.innerHTML = received
-            let obj = {
+            let object = {
                 data: doc.data(),
                 id: doc.id
             }
-            users.push(obj);
+            users.push(object);
         });
         renderTable(users);
     })
