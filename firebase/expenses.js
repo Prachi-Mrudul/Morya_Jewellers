@@ -10,15 +10,19 @@ function getDate() {
     let date, month;
     if (newDate.getDate() <= 9) {
         date = `0${newDate.getDate()}`
+    }else{
+        date = newDate.getDate()
     }
     if (newDate.getMonth() <= 9) {
         month = `0${newDate.getMonth()+1}`
+    }else{
+        month = newDate.getMonth()+1
     }
-    let dateString = `${newDate.getFullYear()}-${month}-${date}`
+    let dateString = `${newDate.getFullYear()}-${month}-${date}`;
     return dateString;
 }
 let todayDate = getDate();
-dateInp.value = getDate();
+dateInp.value = todayDate;
 function addExpensesData(){
     db.collection('expenses').doc().set({
         item: item.value,

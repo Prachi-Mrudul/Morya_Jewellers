@@ -1,100 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gold-loan</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/navbar.css">
 </head>
+
 <body>
+    <nav>
+        <div class="search">
+            <input type="text" id="search" placeholder="Search Customer...">
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Authentication</a></li>
+            <li><a href="/billing/">Billing</a></li>
+            <li><a href="/balance/">Balance</a></li>
+            <li><a href="/sale/">Sale</a></li>
+            <li><a href="/gold-loan/">Gold Loan</a></li>
+            <li><a href="/expenses/">Expenses</a></li>
+        </ul>
+    </nav>
     <div class="container">
-        <form action="" autocomplete="off">
-            <div class="input">
-                <div class="label">
-                    <label for="name">Name :</label>
+        <div class="search_container">
+            <input type="date" id="dateInp" placeholder="Date">
+            <button onclick="fetchData()">Search</button>
+        </div>
+        <div>
+            <p>Total Expenses: <span id="totalExpenses"></span></p>
+        </div>
+    </div>
+    <div class="cont">
+        <h1>Gold Loan</h1>
+        <form action="" id="form" autocomplete="off">
+            <div class="input-parent">
+                <div class="input">
+                    <div class="label">
+                        <label for="name">Name :</label>
+                    </div>
+                    <input type="text" id="name" name="name">
                 </div>
-                <input type="text" id="name" name="name">
-            </div>
-            <div class="input">
-                <div class="label">
-                    <label for="date">Date :</label>
+                <div class="input">
+                    <div class="label">
+                        <label for="date">Date :</label>
+                    </div>
+                    <input type="date" id="date" name="date">
                 </div>
-                <input type="date" id="date" name="date">
-            </div>
-            <div class="input">
-                <div class="label">
-                    <label for="jewellers">Jewellers :</label>
+                <div class="input">
+                    <div class="label">
+                        <label for="jewellers">Jewellers :</label>
+                    </div>
+                    <input type="text" id="jewellers" name="jewellers">
                 </div>
-                <input type="text" id="jewellers" name="jewellers">
             </div>
-            <div class="input">
-                <div class="label">
-                    <label for="number">Mobile No. :</label>
+            <div class="input-parent">
+                <div class="input">
+                    <div class="label">
+                        <label for="number">Mobile No. :</label>
+                    </div>
+                    <input type="number" id="number" name="number">
                 </div>
-                <input type="number" id="number" name="number">
-            </div>
-            <div class="input">
-                <div class="label">
-                    <label for="amount">Amount :</label>
+                <div class="input">
+                    <div class="label">
+                        <label for="amount">Amount :</label>
+                    </div>
+                    <input type="number" id="amount" name="amount">
                 </div>
-                <input type="number" id="amount" name="amount">
-            </div>
-            <div class="input">
-                <div class="label">
-                    <label for="weight">Weight :</label>
+                <div class="input">
+                    <div class="label">
+                        <label for="weight">Weight :</label>
+                    </div>
+                    <input type="number" id="weight" name="weight">
                 </div>
-                <input type="text" id="weight" name="weight">
             </div>
-            <div class="input">
-                <div class="label">
-                    <label for="installment">Installment type :</label>
+            <div class="input-parent">
+                <div class="input">
+                    <div class="label">
+                        <label for="installment">Installment type :</label>
+                    </div>
+                    <select name="installment" id="installment">
+                        <option value="" selected>Select</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
                 </div>
-                <select name="installment" id="installment">
-                    <option value="" selected>Select</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="yearly">Yearly</option>
-                </select>
-            </div>
-            <div class="input">
-                <div class="label">
-                    <label for="paid">Paid :</label>
+                <div class="input">
+                    <div class="label">
+                        <label for="paid">Paid :</label>
+                    </div>
+                    <input type="number" id="paid" name="paid">
                 </div>
-                <input type="number" id="paid" name="paid">
-            </div>
-            <div class="input">
-                <div class="label">
-                    <label for="balance">Balance :</label>
+                <div class="input">
+                    <div class="label">
+                        <label for="balance">Balance :</label>
+                    </div>
+                    <input type="number" id="balance" name="balance">
                 </div>
-                <input type="number" id="balance" name="balance">
             </div>
-            <button>Add</button>
+            <button onclick="addData()" class="add" type="button">Add</button>
         </form>
 
         <table>
-            <tr>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Jewellers</th>
-                <th>Mobile No.</th>
-                <th>Amount</th>
-                <th>Weight</th>
-                <th>Installment type</th>
-                <th>Paid</th>
-                <th>Balance</th>
-            </tr>
-            <tr>
-                <td>lkjhgfd</td>
-                <td>lkjhgfd</td>
-                <td>lkjhgfd</td>
-                <td>lkjhgfd</td>
-                <td>lkjhgfd</td>
-                <td>lkjhgfd</td>
-                <td>lkjhgfd</td>
-                <td>lkjhgfd</td>
-                <td>lkjhgfd</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th class="w-more">Name</th>
+                    <th>Date</th>
+                    <th>Jewellers</th>
+                    <th>Mobile No.</th>
+                    <th>Amount</th>
+                    <th>Weight</th>
+                    <th>Installment type</th>
+                    <th>Paid</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody"></tbody>
         </table>
     </div>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+    <script src="/firebase/config.js"></script>
+    <script src="/firebase/auth.js"></script>
+    <script src="/commonFunctions.js"></script>
+    <script src="/firebase/gold-loan.js"></script>
 </body>
+
 </html>
