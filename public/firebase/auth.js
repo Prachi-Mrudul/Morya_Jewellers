@@ -13,20 +13,6 @@ function signIn() {
             document.getElementById('errorText').innerHTML = error.message;
         });
 }
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        return;
-    } else {
-        if (!window.location.href.includes("authentication")) {
-            document.querySelector('body').innerHTML = '';
-            window.location.href = "/"            
-        }
-        else{
-            return;
-        }
-    }
-});
-
 function signOut() {
     firebase.auth().signOut().then(() => {
        window.alert("Logged Out Successfully")
