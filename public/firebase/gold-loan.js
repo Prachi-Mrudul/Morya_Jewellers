@@ -6,6 +6,7 @@ let number = document.getElementById('number');
 let amount = document.getElementById('amount');
 let weight = document.getElementById('weight');
 let installment = document.getElementById('installment');
+let interest = document.getElementById('interest');
 let paid = document.getElementById('paid');
 let balance = document.getElementById('balance');
 let form = document.getElementById('form');
@@ -15,15 +16,16 @@ const addData = () => {
     let queryString = window.location.search;
     let urlParam = new URLSearchParams(queryString);
     let update = Boolean(urlParam.get('update'));
-    console.log(update)
     let obj = {
         name: name.value,
         date: date.value,
         jewellers: jewellers.value,
         number: number.value,
+        total: Number(Number(amount.value) + Number((amount.value*interest.value)/100)),
         amount: Number(amount.value),
         weight: Number(weight.value),
         installment: installment.value,
+        interest: Number(interest.value),
         paid: Number(paid.value),
         balance: Number(balance.value),
     }
@@ -64,6 +66,7 @@ db.collection("gold_loan").where("date", "==", dateInp.value)
             users.push(obj);
         });
         renderLoanTable(users)
+        console.log(users)
     });
 
 function fetchData() {
@@ -82,9 +85,18 @@ function fetchData() {
             renderLoanTable(users)
             totalBalance.innerHTML = balanceSum;
         });
-
-
 }
+
+function fetchBalance(){
+    let balanceAmount = 0;
+    let userTableBody = document.getElementById('userTableBody');
+    let trs = userTableBody.querySelectorAll('tr');
+    trs.forEach(tr => {
+        balanceAmount = balanceAmount + Number(tr.children[8].innerHTML)
+    });
+    totalBalance.innerHTML = balanceAmount;
+}
+
 function getDate() {
     let newDate = new Date();
     let date, month;
@@ -115,16 +127,17 @@ function renderLoanTable(users) {
             <td>${data.amount}</td>
             <td>${data.weight}</td>
             <td>${data.installment}</td>
+            <td>${data.interest}</td>
             <td>${data.paid}</td>
             <td>${data.balance}</td>
         </tr>`
     });
+    fetchBalance()
 }
 
 function renderForm(data) {
     history.pushState({ page: 1 }, "title 1", `?update=${true}`);
     window.localStorage.setItem('gold_loan', data)
-    console.log("data")
     db.collection('gold_loan').doc(localStorage.getItem('gold_loan')).get()
         .then(function (doc) {
             name.value = doc.data().name;
@@ -133,6 +146,7 @@ function renderForm(data) {
             number.value = doc.data().number;
             amount.value = doc.data().amount;
             weight.value = doc.data().weight;
+            interest.value = doc.data().interest;
             installment.value = doc.data().installment;
             paid.value = doc.data().paid;
             balance.value = doc.data().balance;
@@ -141,3 +155,7 @@ function renderForm(data) {
             window.alert('Error Getting Document')
         })
 }
+paid.addEventListener('input', (e)=>{
+    let balanceAmount = Number(Number(amount.value) + Number(Number(amount.value)*Number(interest.value))/100) - Number(e.target.value)
+    balance.value = balanceAmount
+})

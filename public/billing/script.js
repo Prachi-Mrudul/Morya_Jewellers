@@ -37,7 +37,7 @@ function getPrice() {
         window.alert("Error Fetching Items");
     }
 }
-getPrice()
+// getPrice()
 function addElem(elem) {
     let row = elem.parentNode.parentNode;
     let tableItem = row.children[1].children[0].value
@@ -86,18 +86,22 @@ function trsget() {
     })
 }
 function evaluateTable() {
-    getPrice();
+    // getPrice();
     let rows = table.rows;
     let sum = 0;
     for (let j = 1; j < rows.length; j++) {
-        rows[j].children[7].innerHTML = Number(rows[j].children[5].innerHTML) + Number(rows[j].children[6].innerHTML)
+        let wt = 0;
+        wt = Number(rows[j].children[3].innerHTML) + Number(rows[j].children[4].innerHTML)/1000
+        console.log(wt)
+        let totalMakingCharges = wt * Number(rows[j].children[6].innerHTML)
+        rows[j].children[7].innerHTML = Number(Number(wt) * Number(rows[j].children[5].innerHTML)) + totalMakingCharges
         sum = sum + Number(rows[j].children[7].innerHTML)
         rows[j].children[0].innerHTML = j;
     }
     itemTotal.value = sum;
     discountedAmount.value = sum - (sum * (discount.value / 100)).toFixed(0)
-    grandTotal.innerHTML = discountedAmount.value - (discountedAmount.value * (gst.value / 100));
-    balance.value = Number(grandTotal.innerHTML) - paid.value
+    grandTotal.innerHTML = Number(discountedAmount.value) + Number(discountedAmount.value * (gst.value / 100));
+    balance.value = Number(grandTotal.innerHTML) - Number(paid.value)
 }
 
 let flag1 = false

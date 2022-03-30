@@ -40,7 +40,12 @@ button{
     padding: 5px 10px;
     cursor: pointer;
 }
-#errorText{
+#status{
     margin: 15px 0;
+}
+.success-text{
+    color: green;
+}
+.danger-text{
     color: red;
 }

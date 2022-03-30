@@ -7,6 +7,7 @@ const renderTable = (users) => {
             <td>${user.data.date}</td>
             <td>${user.data.name}</td>
             <td>${user.data.total}</td>
+            <td>${user.data.grandTotal}</td>
             <td>${user.data.paid}</td>
             <td>${user.data.balance}</td>
         </tr>`

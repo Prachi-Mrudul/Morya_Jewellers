@@ -1,6 +1,12 @@
-let user = await firebase.auth().currentUser;
-if (user === null) {
-    window.location.href = "/";
-} else {
-    return;
-}
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        console.log("User")
+    } else {
+        let url = window.location.pathname;
+        if (url != "/") {
+            window.location.pathname = "/"
+        }else{
+            window.alert("Sign In First")
+        }
+    }
+});

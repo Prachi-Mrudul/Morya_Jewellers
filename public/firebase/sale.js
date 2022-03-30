@@ -10,7 +10,7 @@ function dateFilter(){
     .get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-            sale += doc.data().total;
+            sale += doc.data().grandTotal;
             received += doc.data().paid;
             totalSale.innerHTML = sale;
             paymentRecieved.innerHTML = received
@@ -26,6 +26,7 @@ function dateFilter(){
         window.alert("Error getting document");
     });
 }
+
 
 function billNoFilter(){
     let users = []
